@@ -1,0 +1,29 @@
+{
+  "name": "vue2-vue-router2-webpack2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qinshenxue/vue2-vue-router2-webpack2.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qinshenxue/vue2-vue-router2-webpack2/issues"
+  },
+  "homepage": "https://github.com/qinshenxue/vue2-vue-router2-webpack2#readme",
+  "devDependencies": {
+    "vue": "^2.1.10",
+    "vue-router": "^2.2.1",
+    "vue-loader": "^11.0.0",
+    "vue-template-compiler":"^2.x",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0",
+    "css-loader":"latest"
+  }
+}
