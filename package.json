@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --open",
+    "dev": "webpack-dev-server --hot --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +21,7 @@
     "vue": "^2.1.10",
     "vue-router": "^2.2.1",
     "vue-loader": "^11.0.0",
-    "vue-template-compiler":"^2.x",
+    "vue-template-compiler":"^2.1.10",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0",
     "css-loader":"latest"
