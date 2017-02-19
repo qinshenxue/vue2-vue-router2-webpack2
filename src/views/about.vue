@@ -3,14 +3,15 @@
         这是{{page}}页面
     </div>
 </template>
-<style>
-    .about{
-    color:red
+<style lang="css">
+    .about {
+        color: red
     }
 </style>
 <script type="text/javascript">
-    module.exports = {
-        data: function () {
+    import '../css/about.css'
+    export default {
+        data () {
             return {
                 page: 'about'
             }
