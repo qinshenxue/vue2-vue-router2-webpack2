@@ -5,16 +5,19 @@ module.exports = {
         publicPath: '/static/',
         filename: 'build.js'
     },
-module: {
-    rules: [
-        {
-            test: /\.vue$/,
-            use: "vue-loader"
-        },
-{
-    test: /\.css$/,
-    use: ["vue-style-loader", "css-loader"]
-}
-    ]
-}
+    module: {
+        rules: [{
+                test: /\.vue$/,
+                use: "vue-loader"
+            },
+            {
+                test: /\.css$/,
+                use: ["vue-style-loader", "css-loader"]
+            },
+            {
+                test: /\.less$/,
+                use: ["vue-style-loader", "css-loader", "less-loader"]
+            }
+        ]
+    }
 }

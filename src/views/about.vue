@@ -10,6 +10,7 @@
 </style>
 <script type="text/javascript">
     import '../css/about.css'
+    import '../css/about.less'
     export default {
         data () {
             return {

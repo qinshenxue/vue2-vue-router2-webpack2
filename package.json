@@ -19,6 +19,8 @@
   "homepage": "https://github.com/qinshenxue/vue2-vue-router2-webpack2#readme",
   "devDependencies": {
     "css-loader": "^0.26.1",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
     "vue": "^2.1.10",
     "vue-loader": "^11.0.0",
     "vue-router": "^2.2.1",
