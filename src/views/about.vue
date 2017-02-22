@@ -1,5 +1,6 @@
 <template>
     <div class="about">
+    <img src="../images/logo.png">
         这是{{page}}页面
     </div>
 </template>
