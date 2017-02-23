@@ -4,7 +4,7 @@
         这是{{page}}页面
     </div>
 </template>
-<style lang="css">
+<style>
     .about {
         color: red
     }
