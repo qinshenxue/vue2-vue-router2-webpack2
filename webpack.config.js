@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+var path = require('path');
 module.exports = {
     entry: './src/main.js',
     output: {
@@ -7,6 +9,10 @@ module.exports = {
     },
     module: {
         rules: [{
+                test: /\.js$/,
+                use: "babel-loader",
+                include: [path.resolve(__dirname, 'src')]
+            }, {
                 test: /\.vue$/,
                 use: "vue-loader"
             },
@@ -39,5 +45,12 @@ module.exports = {
                 }]
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ]
 }
