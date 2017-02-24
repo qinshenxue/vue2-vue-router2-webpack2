@@ -9,6 +9,11 @@
         color: red
     }
 </style>
+<style lang="less">
+    .about {
+        color: blue
+    }
+</style>
 <script type="text/javascript">
     import '../css/about.css'
     import '../css/about.less'

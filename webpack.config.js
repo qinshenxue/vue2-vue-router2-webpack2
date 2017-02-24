@@ -13,7 +13,8 @@ module.exports = {
                 test: /\.js$/,
                 use: "babel-loader",
                 include: [path.resolve(__dirname, 'src')]
-            }, {
+            },
+            {
                 test: /\.vue$/,
                 use: {
                     loader: "vue-loader",
@@ -21,6 +22,9 @@ module.exports = {
                         loaders: {
                             css: ExtractTextPlugin.extract({
                                 use: 'css-loader'
+                            }),
+                            less: ExtractTextPlugin.extract({
+                                use: ["css-loader", "less-loader"]
                             })
                         }
                     }
