@@ -9,14 +9,14 @@
         color: red
     }
 </style>
-<style lang="less">
-    .about {
-        color: blue
-    }
+<style lang="stylus">
+$color = gray;
+    .about
+        color: $color
 </style>
 <script type="text/javascript">
     import '../css/about.css'
-    import '../css/about.less'
+    import '../css/about.styl'
     export default {
         data () {
             return {

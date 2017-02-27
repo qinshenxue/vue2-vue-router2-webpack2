@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/main.js',
     output: {
@@ -21,10 +22,10 @@ module.exports = {
                     options: {
                         loaders: {
                             css: ExtractTextPlugin.extract({
-                                use: 'css-loader'
+                                use: ['css-loader', "postcss-loader"]
                             }),
-                            less: ExtractTextPlugin.extract({
-                                use: ["css-loader", "less-loader"]
+                            stylus: ExtractTextPlugin.extract({
+                                use: ["css-loader", "postcss-loader", "stylus-loader"]
                             })
                         }
                     }
@@ -33,13 +34,13 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
-                    use: "css-loader"
+                    use: ['css-loader', "postcss-loader"]
                 })
             },
             {
-                test: /\.less$/,
+                test: /\.styl$/,
                 use: ExtractTextPlugin.extract({
-                    use: ["css-loader", "less-loader"]
+                    use: ["css-loader", "postcss-loader", "stylus-loader"]
                 })
             },
             {
@@ -65,13 +66,16 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"'
         }),
+        new webpack.optimize.UglifyJsPlugin(),
         new ExtractTextPlugin({
-            filename: "css/style.css"
+            filename: "css/style.css?[contenthash:8]"
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.tpl.html'
         })
     ]
 }
