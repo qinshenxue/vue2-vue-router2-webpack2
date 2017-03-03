@@ -9,7 +9,7 @@
         color: red
     }
 </style>
-<style lang="stylus">
+<style lang="stylus" scoped>
 $color = gray;
     .about
         color: $color
