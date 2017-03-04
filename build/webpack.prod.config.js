@@ -1,69 +1,20 @@
-const webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin")
+process.env.NODE_ENV = 'production';
+var webpack = require('webpack');
+var merge = require('webpack-merge');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-module.exports = {
-    entry: './src/main.js',
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var baseWebpackConfig = require('./webpack.base.config');
+var utils = require('./utils');
+var config = require('./config');
+
+
+module.exports = merge(baseWebpackConfig, {
     output: {
-        path: __dirname + '/static',
-        publicPath: '/static/',
-        filename: 'build.js'
+        path: config.prod.outputPath,
+        publicPath: config.prod.outputPublicPath
     },
     module: {
-        rules: [{
-                test: /\.js$/,
-                use: "babel-loader",
-                include: [path.resolve(__dirname, 'src')]
-            },
-            {
-                test: /\.vue$/,
-                use: {
-                    loader: "vue-loader",
-                    options: {
-                        loaders: {
-                            css: ExtractTextPlugin.extract({
-                                use: ['css-loader', "postcss-loader"]
-                            }),
-                            stylus: ExtractTextPlugin.extract({
-                                use: ["css-loader", "postcss-loader", "stylus-loader"]
-                            })
-                        }
-                    }
-                }
-            },
-            {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    use: ['css-loader', "postcss-loader"]
-                })
-            },
-            {
-                test: /\.styl$/,
-                use: ExtractTextPlugin.extract({
-                    use: ["css-loader", "postcss-loader", "stylus-loader"]
-                })
-            },
-            {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                use: {
-                    loader: "url-loader",
-                    options: {
-                        limit: 10000,
-                        name: 'img/[name].[hash:7].[ext]'
-                    }
-                }
-            },
-            {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                use: [{
-                    loader: "url-loader",
-                    options: {
-                        limit: 10000,
-                        name: 'fonts/[name].[hash:7].[ext]'
-                    }
-                }]
-            }
-        ]
+        rules: utils.styleLoaders()
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -75,7 +26,8 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'index.tpl.html'
+            template: 'index.html',
+            inject: true
         })
     ]
-}
+})

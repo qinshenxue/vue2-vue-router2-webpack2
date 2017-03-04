@@ -1,14 +1,19 @@
 var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
-var config = require("./webpack.dev.config");
-var compiler = webpack(config);
+var devConfig = require("./webpack.dev.config");
+var config = require("./config");
+var compiler = webpack(devConfig);
 var server = new webpackDevServer(compiler, {
     hot: true,
-    publicPath: '/static/',
+    noInfo: true,
+    publicPath: config.dev.outputPublicPath,
     stats: { colors: true }
 });
-var c = require('child_process');
-
-server.listen(8080, "0.0.0.0", function() {
-    c.exec("start http://127.0.0.1:8080/");
-});
+server.listen(config.dev.port, "0.0.0.0");
+var url = `http://localhost:${config.dev.port}`;
+var process = require('child_process');
+// 打包完毕后启动浏览器
+server.middleware.waitUntilValid(function() {
+    console.log(`> Listening at ${url}`);
+    process.exec(`start ${url}/`);
+})

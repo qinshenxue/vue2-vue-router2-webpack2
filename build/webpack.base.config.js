@@ -1,16 +1,15 @@
-const webpack = require('webpack');
+var webpack = require('webpack');
 var path = require('path');
+var utils = require('./utils');
 
 function resolve(relPath) {
-    return path.resolve(__dirname, relPath)
+    return path.resolve(__dirname, relPath);
 }
 
 module.exports = {
     entry: { app: resolve('../src/main.js') },
     output: {
-        path: resolve('../static/'),
-        publicPath: '/static/',
-        filename: 'build.js'
+        filename: '[name].js'
     },
     module: {
         rules: [{
@@ -22,7 +21,7 @@ module.exports = {
                 test: /\.vue$/,
                 use: {
                     loader: "vue-loader",
-                    options: {}
+                    options: utils.vueLoaderOptions()
                 }
             },
             {
