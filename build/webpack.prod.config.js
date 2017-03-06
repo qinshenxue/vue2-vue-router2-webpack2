@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var merge = require('webpack-merge');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
 var baseWebpackConfig = require('./webpack.base.config');
 var utils = require('./utils');
 var config = require('./config');
@@ -23,6 +24,22 @@ module.exports = merge(baseWebpackConfig, {
         new webpack.optimize.UglifyJsPlugin(),
         new ExtractTextPlugin({
             filename: "css/style.css?[contenthash:8]"
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: function(module, count) {
+                return (
+                    module.resource &&
+                    /\.js$/.test(module.resource) &&
+                    module.resource.indexOf(
+                        path.join(__dirname, '../node_modules')
+                    ) === 0
+                )
+            }
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'manifest',
+            chunks: ['vendor']
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
