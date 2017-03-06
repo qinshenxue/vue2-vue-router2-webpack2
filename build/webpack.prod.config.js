@@ -1,3 +1,4 @@
+// 设定为生产环境
 process.env.NODE_ENV = 'production';
 var webpack = require('webpack');
 var merge = require('webpack-merge');
@@ -6,7 +7,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var baseWebpackConfig = require('./webpack.base.config');
 var utils = require('./utils');
 var config = require('./config');
-
 
 module.exports = merge(baseWebpackConfig, {
     output: {
