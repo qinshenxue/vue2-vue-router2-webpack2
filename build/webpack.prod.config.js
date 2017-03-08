@@ -12,7 +12,8 @@ var config = require('./config');
 module.exports = merge(baseWebpackConfig, {
     output: {
         path: config.prod.outputPath,
-        publicPath: config.prod.outputPublicPath
+        publicPath: config.prod.outputPublicPath,
+        filename:'js/[name].[chunkhash].js'
     },
     module: {
         rules: utils.styleLoaders()
