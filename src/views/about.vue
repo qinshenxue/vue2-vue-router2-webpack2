@@ -1,6 +1,6 @@
 <template>
     <div class="about">
-    <img src="../images/logo.png">
+        <img src="../images/logo.png">
         这是{{page}}页面
     </div>
 </template>
@@ -10,14 +10,14 @@
     }
 </style>
 <style lang="stylus">
-$color = gray;
+    $color = gray;
     .about
         color: $color
 </style>
 <script type="text/javascript">
-    import '../css/about.css'
-    import '../css/about.styl'
-    export default {
+    require('../css/about.css')
+    require('../css/about.styl')
+    module.exports = {
         data () {
             return {
                 page: 'about'
