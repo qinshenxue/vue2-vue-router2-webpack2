@@ -6,7 +6,7 @@ var utils = require('./utils');
 var config = require('./config');
 
 // 热替换
-Object.keys(baseWebpackConfig.entry).forEach(function(name) {
+Object.keys(baseWebpackConfig.entry).forEach(function (name) {
     baseWebpackConfig.entry[name] = [
         `webpack-dev-server/client?http://localhost:${config.dev.port}/`,
         "webpack/hot/dev-server"
@@ -25,7 +25,7 @@ module.exports = merge(baseWebpackConfig, {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'index.html',
+            template: 'index.tpl.html',
             inject: true
         })
     ]

@@ -13,7 +13,7 @@ module.exports = merge(baseWebpackConfig, {
     output: {
         path: config.prod.outputPath,
         publicPath: config.prod.outputPublicPath,
-        filename:'js/[name].[chunkhash].js'
+        filename: 'js/[name].js?[chunkhash]'
     },
     module: {
         rules: utils.styleLoaders()
@@ -28,7 +28,7 @@ module.exports = merge(baseWebpackConfig, {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            minChunks: function(module, count) {
+            minChunks: function (module, count) {
                 return module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
             }
         }),
@@ -37,8 +37,8 @@ module.exports = merge(baseWebpackConfig, {
             chunks: ['vendor']
         }),
         new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'index.html',
+            filename: '../index.html',
+            template: 'index.tpl.html',
             inject: true
         })
     ]

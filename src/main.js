@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+const VueRouter = require('vue-router');
 import App from './app.vue';
 Vue.use(VueRouter);
 const router = new VueRouter(require('./router'))

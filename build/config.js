@@ -7,6 +7,6 @@ module.exports = {
     },
     prod: {
         outputPath: path.resolve(__dirname, '../static'),
-        outputPublicPath: '/static/'
+        outputPublicPath: 'static/'
     }
 }
