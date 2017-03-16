@@ -10,10 +10,10 @@ var server = new webpackDevServer(compiler, {
     stats: { colors: true }
 });
 server.listen(config.dev.port, "0.0.0.0");
-var url = `http://localhost:${config.dev.port}`;
-var process = require('child_process');
+var url = `http://localhost:${config.dev.port}/`;
+var opn = require('opn');
 // 打包完毕后启动浏览器
 server.middleware.waitUntilValid(function() {
     console.log(`> Listening at ${url}`);
-    process.exec(`start ${url}/`);
+    opn(`${url}`);
 })
