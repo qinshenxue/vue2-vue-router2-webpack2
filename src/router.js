@@ -1,8 +1,8 @@
-module.exports = {
-    routes: [
-        {
-            path: '/about',
-            component: require('./views/about.vue')
-        }
-    ]
+import about from './views/about.vue'
+
+export default {
+    routes: [{
+        path: '/about',
+        component: about
+    }]
 }

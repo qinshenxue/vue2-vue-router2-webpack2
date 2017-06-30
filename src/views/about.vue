@@ -15,9 +15,9 @@
         color: $color
 </style>
 <script type="text/javascript">
-    require('../css/about.css')
-    require('../css/about.styl')
-    module.exports = {
+    import '../css/about.css'
+    import '../css/about.styl'
+    export default {
         data () {
             return {
                 page: 'about'
