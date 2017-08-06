@@ -1,8 +1,23 @@
-import about from './views/about.vue'
-
+import index from './views/index.vue'
+import css from './views/css.vue'
+import stylus from './views/stylus.vue'
+import less from './views/less.vue'
+import sass from './views/sass.vue'
 export default {
     routes: [{
-        path: '/about',
-        component: about
+        path: '/index',
+        component: index
+    },{
+        path: '/css',
+        component: css
+    },{
+        path: '/stylus',
+        component: stylus
+    },{
+        path: '/less',
+        component: less
+    },{
+        path: '/sass',
+        component: sass
     }]
 }
