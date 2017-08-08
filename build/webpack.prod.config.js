@@ -19,6 +19,7 @@ module.exports = merge(baseWebpackConfig, {
         rules: utils.styleLoaders()
     },
     plugins: [
+        new webpack.ProgressPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
