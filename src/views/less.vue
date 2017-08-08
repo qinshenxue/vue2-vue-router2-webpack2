@@ -10,5 +10,5 @@
 }
 </style>
 <script>
-import "../css/style.less"
+import "../css/less-example.less"
 </script>

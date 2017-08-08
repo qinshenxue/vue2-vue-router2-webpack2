@@ -5,12 +5,12 @@
     </div>
 </template>
 <style lang="scss">
-.sass {
-    .red {
-        color: red
+    .sass {
+        .red {
+            color: red
+        }
     }
-}
 </style>
 <script>
-import "../css/style.scss"
+    import "../css/sass-example.scss"
 </script>

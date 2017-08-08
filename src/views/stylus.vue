@@ -5,10 +5,10 @@
     </div>
 </template>
 <style lang="stylus">
-.stylus
-    .red
-        color red
+    .stylus
+        .red
+            color red
 </style>
 <script>
-import "../css/style.styl"
+    import "../css/stylus-example.styl"
 </script>

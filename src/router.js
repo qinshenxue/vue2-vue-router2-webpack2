@@ -3,9 +3,12 @@ import css from './views/css.vue'
 import stylus from './views/stylus.vue'
 import less from './views/less.vue'
 import sass from './views/sass.vue'
+import image from './views/image.vue'
+import iconfont from './views/iconfont.vue'
 export default {
+    linkActiveClass:'active',
     routes: [{
-        path: '/index',
+        path: '/',
         component: index
     },{
         path: '/css',
@@ -19,5 +22,11 @@ export default {
     },{
         path: '/sass',
         component: sass
+    },{
+        path: '/image',
+        component: image
+    },{
+        path: '/iconfont',
+        component: iconfont
     }]
 }
