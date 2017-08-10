@@ -23,7 +23,7 @@ module.exports = merge(baseWebpackConfig, {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
-      //  new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
         new ExtractTextPlugin({
             allChunks: true,
             filename: "css/style.css?[contenthash:8]"
