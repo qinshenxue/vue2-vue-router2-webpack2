@@ -26,6 +26,7 @@ module.exports = merge(baseWebpackConfig, {
         }),
         new webpack.optimize.UglifyJsPlugin(),
         new ExtractTextPlugin({
+            allChunks:true,
             filename: "css/style.css?[contenthash:8]"
         }),
         new webpack.optimize.CommonsChunkPlugin({
