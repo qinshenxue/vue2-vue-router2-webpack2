@@ -1,14 +1,14 @@
 var webpack = require('webpack');
 var merge = require('webpack-merge');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var baseWebpackConfig = require('./webpack.base.config');
 var utils = require('./utils');
 var config = require('./config');
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
+var htmlPlugins = [];
 
 // 热替换
-Object.keys(baseWebpackConfig.entry).forEach(function(name) {
+Object.keys(baseWebpackConfig.entry).forEach(function (name) {
     baseWebpackConfig.entry[name] = [
         `webpack-dev-server/client?http://localhost:${config.dev.port}/`,
         "webpack/hot/dev-server"
@@ -26,11 +26,7 @@ module.exports = merge(baseWebpackConfig, {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'index.tpl.html',
-            inject: true
-        }),
+        ...utils.genHtmlPlugins(),
         new FriendlyErrorsPlugin()
     ]
 })

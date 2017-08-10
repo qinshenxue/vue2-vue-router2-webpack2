@@ -1,4 +1,5 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var isProd = process.env.NODE_ENV === "production";
 // 根据项目需求添加CSS预处理语言并安装相应的loader，以stylus-loader为例
 var cssLang = [{
@@ -9,14 +10,14 @@ var cssLang = [{
     name: 'stylus',
     reg: /\.styl$/,
     loader: "stylus-loader"
-},{
-      name: 'less',
+}, {
+    name: 'less',
     reg: /\.less$/,
-    loader: "less-loader" 
-},{
-      name: 'sass',
+    loader: "less-loader"
+}, {
+    name: 'sass',
     reg: /\.scss$/,
-    loader: "sass-loader" 
+    loader: "sass-loader"
 }];
 
 function genLoaders(lang) {
@@ -36,7 +37,7 @@ function genLoaders(lang) {
     return loaders;
 }
 // 各种CSS的loader
-exports.styleLoaders = function() {
+exports.styleLoaders = function () {
     var output = [];
     cssLang.forEach(lang => {
         output.push({
@@ -47,7 +48,7 @@ exports.styleLoaders = function() {
     return output;
 };
 // vue-loader的options
-exports.vueLoaderOptions = function() {
+exports.vueLoaderOptions = function () {
     var options = {
         loaders: {}
     };
@@ -55,4 +56,25 @@ exports.vueLoaderOptions = function() {
         options.loaders[lang.name] = genLoaders(lang);
     });
     return options;
+}
+
+/**
+ * 多入口生成多页面
+ * @returns {Array}
+ */
+exports.genHtmlPlugins = function () {
+
+    var baseWebpackConfig = require('./webpack.base.config');
+    var path = require('path')
+    var plugins = [];
+    Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+        plugins.push(
+            new HtmlWebpackPlugin({
+                filename: isProd ? path.resolve(__dirname, '../' + name + '.html') : name + '.html',
+                template: 'index.tpl.html',
+                chunks: isProd ? ['vendor', 'manifest', name] : [name],
+                inject: true
+            }))
+    })
+    return plugins
 }

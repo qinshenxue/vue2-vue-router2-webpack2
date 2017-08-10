@@ -7,7 +7,11 @@ function resolve(relPath) {
 }
 
 module.exports = {
-    entry: { app: resolve('../src/main.js') },
+    entry: {
+        index: resolve('../src/app/main.js'),
+        app2: resolve('../src/app2/main.js'),
+        app3: resolve('../src/app3/main.js')
+    },
     output: {
         filename: 'js/[name].js',
         chunkFilename: "js/[name].[chunkhash].js"

@@ -2,7 +2,6 @@
 process.env.NODE_ENV = 'production';
 var webpack = require('webpack');
 var merge = require('webpack-merge');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var baseWebpackConfig = require('./webpack.base.config');
@@ -24,9 +23,9 @@ module.exports = merge(baseWebpackConfig, {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
-        new webpack.optimize.UglifyJsPlugin(),
+      //  new webpack.optimize.UglifyJsPlugin(),
         new ExtractTextPlugin({
-            allChunks:true,
+            allChunks: true,
             filename: "css/style.css?[contenthash:8]"
         }),
         new webpack.optimize.CommonsChunkPlugin({
@@ -39,10 +38,6 @@ module.exports = merge(baseWebpackConfig, {
             name: 'manifest',
             chunks: ['vendor']
         }),
-        new HtmlWebpackPlugin({
-            filename: '../index.html',
-            template: 'index.tpl.html',
-            inject: true
-        })
+        ...utils.genHtmlPlugins()
     ]
 })
