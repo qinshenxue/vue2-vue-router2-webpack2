@@ -16,12 +16,19 @@ module.exports = {
         filename: 'js/[name].js',
         chunkFilename: "js/[name].[chunkhash].js"
     },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            '@': resolve('../src'),
+            '~': resolve('../src/assets')
+        }
+    },
     module: {
         rules: [{
-                test: /\.js$/,
-                use: "babel-loader",
-                include: [resolve('../src')]
-            },
+            test: /\.js$/,
+            use: "babel-loader",
+            include: [resolve('../src')]
+        },
             {
                 test: /\.vue$/,
                 use: {

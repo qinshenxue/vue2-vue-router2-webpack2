@@ -25,5 +25,5 @@
 </style>
 <script>
     import './css/app3.css'
-    import "../assets/css/font/iconfont.css"
+    import "~/css/font/iconfont.css"
 </script>
