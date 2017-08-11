@@ -34,7 +34,7 @@ module.exports = {
                 use: {
                     loader: "url-loader",
                     options: {
-                        limit: 1,
+                        limit: 10000,
                         name: 'images/[name].[hash:7].[ext]'
                     }
                 }
@@ -44,7 +44,7 @@ module.exports = {
                 use: [{
                     loader: "url-loader",
                     options: {
-                        limit: 1,
+                        limit: 10000,
                         name: 'fonts/[name].[hash:7].[ext]'
                     }
                 }]
