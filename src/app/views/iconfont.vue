@@ -19,5 +19,5 @@
 
 </style>
 <script>
-    import "../css/font/iconfont.css"
+    import "vui/css/font/iconfont.css"
 </script>
