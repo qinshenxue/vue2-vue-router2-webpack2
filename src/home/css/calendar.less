@@ -1,0 +1,63 @@
+.calendar {
+    min-height: 100px;
+
+}
+
+.calendar-month-wrap {
+    width: 100%;
+    position: relative;
+}
+
+.calendar-month {
+    position: absolute;
+    min-height: 100px;
+    width: 100%;
+    left: 0;
+    transition: transform 3s ease-in;
+    .next-month,
+    .prev-month {
+        color: #999;
+    }
+
+}
+.calendar-week{
+    display: flex;
+    height: 50px;
+    overflow: hidden;
+    > div {
+        flex:1;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+    }
+}
+.calendar-week-title{
+    border-bottom:1px solid #ddd;
+}
+
+.fade-enter-active, .fade-leave-active,
+.swipe-right-enter-active, .swipe-right-leave-active,
+.swipe-left-enter-active, .swipe-left-leave-active {
+    transition: all .2s ease-in;
+}
+
+.swipe-left-enter {
+    transform: translate3d(100%, 0, 0);
+}
+
+.swipe-left-leave-to {
+    transform: translate3d(-100%, 0, 0);
+}
+
+.swipe-right-enter {
+    transform: translate3d(-100%, 0, 0);
+}
+
+.swipe-right-leave-to {
+    transform: translate3d(100%, 0, 0);
+}
+
+.fade-leave-to,
+.fade-enter{
+    height: 0
+}

@@ -47,5 +47,8 @@
         "webpack": "^3.5.2",
         "webpack-dev-server": "^2.7.1",
         "webpack-merge": "^4.1.0"
+    },
+    "dependencies": {
+        "hammerjs": "^2.0.8"
     }
 }

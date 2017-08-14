@@ -9,8 +9,8 @@
             <router-link to="/image">支持图片</router-link>
             <router-link to="/iconfont">支持图标字体</router-link>
             <router-link to="/async">异步组件</router-link>
-            <a href="/app2.html">查看app2</a>
-            <a href="/app3.html">查看app3</a>
+            <a href="/module2.html">查看app2</a>
+            <a href="/module3.html">查看app3</a>
         </div>
         <div class="view">
             <router-view></router-view>
