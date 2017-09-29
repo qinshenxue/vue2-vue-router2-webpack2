@@ -14,10 +14,10 @@
 
     .iconfont {
         font-size: 50px;
-        color:#20744A;
+        color: #20744A;
     }
 
 </style>
 <script>
-    import "~/css/font/iconfont.css"
+    require("~/css/font/iconfont.css")
 </script>

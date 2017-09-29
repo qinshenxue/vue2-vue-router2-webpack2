@@ -5,7 +5,7 @@ var config = require("./config");
 var compiler = webpack(devConfig);
 var server = new webpackDevServer(compiler, {
     hot: true,
-    quiet: true,
+   // quiet: true,
     publicPath: config.dev.outputPublicPath,
     stats: { colors: true }
 });

@@ -24,6 +24,6 @@
 
 </style>
 <script>
-    import './css/app3.css'
-    import "~/css/font/iconfont.css"
+    require('./css/app3.css')
+    require("~/css/font/iconfont.css")
 </script>

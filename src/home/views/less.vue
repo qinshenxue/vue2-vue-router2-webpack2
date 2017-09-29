@@ -5,10 +5,10 @@
     </div>
 </template>
 <style lang="less">
-.less .red {
-    color: red
-}
+    .less .red {
+        color: red
+    }
 </style>
 <script>
-import "../css/less-example.less"
+    require("../css/less-example.less")
 </script>
