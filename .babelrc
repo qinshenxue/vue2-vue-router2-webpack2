@@ -2,5 +2,5 @@
     "presets": [
         ["env", { "modules": false }]
     ],
-    "comments": false
+    "comments": true
 }
