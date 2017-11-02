@@ -1,4 +1,4 @@
-# vue2-vue-router2-webpack2
+# vue2-vue-router2-webpack3
 
 # Blog
 [http://www.qinshenxue.com/article/20161118151423.html](http://www.qinshenxue.com/article/20161118151423.html)
