@@ -1,6 +1,13 @@
 {
     "presets": [
-        ["env", { "modules": false }]
+        [
+            "env",
+            {
+                "modules": false
+            }
+        ]
     ],
-    "comments": true
+    "plugins": [
+        "syntax-dynamic-import"
+    ]
 }

@@ -10,5 +10,5 @@
             color red
 </style>
 <script>
-    require("../css/stylus-example.styl")
+    import("../css/stylus-example.styl")
 </script>

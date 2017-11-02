@@ -5,12 +5,12 @@
     </div>
 </template>
 <style>
-.red {
-    color: red
-}
+    .red {
+        color: red
+    }
 </style>
 <script>
-require( "../css/style.css")
+    import("../css/style.css")
 </script>
 
 

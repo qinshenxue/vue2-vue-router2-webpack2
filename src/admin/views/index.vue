@@ -1,13 +1,13 @@
 <template>
     <div>
-        这是app3的页面
+        {{message}}，后台管理页面
     </div>
 </template>
 <script>
     export default {
         data: function () {
             return {
-                page: 'index'
+                message: 'hello'
             }
         }
     }

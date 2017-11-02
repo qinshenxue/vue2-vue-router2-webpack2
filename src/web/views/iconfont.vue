@@ -19,5 +19,5 @@
 
 </style>
 <script>
-    require("~/css/font/iconfont.css")
+    require("../css/font/iconfont.css")
 </script>

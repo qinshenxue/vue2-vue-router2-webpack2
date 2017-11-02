@@ -12,5 +12,5 @@
     }
 </style>
 <script>
-    require("../css/sass-example.scss")
+    import("../css/sass-example.scss")
 </script>

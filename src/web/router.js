@@ -28,8 +28,8 @@ export default {
     }, {
         path: '/iconfont',
         component: iconfont
-    }/*, {
+    }, {
         path: '/async',
-        component: () => import(/!* webpackChunkName: "async" *!/'./views/async.vue')
-    }*/]
+        component: () => import(/* webpackChunkName: "async" */'./views/async.vue')
+    }]
 }
