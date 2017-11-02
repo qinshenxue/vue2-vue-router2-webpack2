@@ -6,5 +6,3 @@
 # Demo
 
 [https://qinshenxue.github.io/vue2-vue-router2-webpack2/](https://qinshenxue.github.io/vue2-vue-router2-webpack2/)
-
-![](demo.gif)
