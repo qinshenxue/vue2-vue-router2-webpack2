@@ -28,16 +28,45 @@ module.exports = merge(baseWebpackConfig, {
             allChunks: true,
             filename: "css/[name].css?[contenthash:8]"
         }),
+
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: function (module, count) {
-                return module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
-            }
+            name: 'admin-vendor',
+            chunks:['admin'],
+            minChunks: function (module) {
+                // This prevents stylesheet resources with the .css or .scss extension
+                // from being moved from their original chunk to the vendor chunk
+                /* if(module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+                  return false;
+                } */
+                return module.context && module.context.indexOf("node_modules") !== -1;
+              }
+        }), 
+
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'web-vendor',
+            chunks:['web'],
+            minChunks: function (module) {
+                // This prevents stylesheet resources with the .css or .scss extension
+                // from being moved from their original chunk to the vendor chunk
+                // if(module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+                //   return false;
+                // }
+                return module.context && module.context.indexOf("node_modules") !== -1;
+              }
+        }), 
+
+        new webpack.optimize.CommonsChunkPlugin({
+            name:'vendor',
+            chunks: ['admin-vendor','web-vendor']
         }),
+
+       
         new webpack.optimize.CommonsChunkPlugin({
-            names:'manifest',
+            name:'manifest',
             chunks: ['vendor']
         }),
+
+        
         ...utils.genHtmlPlugins()
     ]
 })

@@ -10,7 +10,7 @@
     }
 </style>
 <script>
-    import("../css/style.css")
+    require("../css/style.css")
 </script>
 
 
