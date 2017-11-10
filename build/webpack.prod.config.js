@@ -30,26 +30,12 @@ module.exports = merge(baseWebpackConfig, {
         }),
 
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'web-vendor',
-            chunks: ['web'],
-            minChunks: function (module) {
-                return module.context && module.context.indexOf("node_modules") !== -1;
-            }
-        }),
-
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'admin-vendor',
-            chunks: ['admin'],
-            minChunks: function (module) {
-                return module.context && module.context.indexOf("node_modules") !== -1;
-            }
-        }),
-
-        new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            chunks: ['admin-vendor', 'web-vendor']
+            chunks: ['moduleA', 'moduleB', 'moduleC'],
+            minChunks: function (module) {
+                return module.context && module.context.indexOf("node_modules") !== -1;
+            }
         }),
-
 
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
