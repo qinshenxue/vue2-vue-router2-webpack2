@@ -9,7 +9,6 @@
             <router-link to="/image">支持图片</router-link>
             <router-link to="/iconfont">支持图标字体</router-link>
             <router-link to="/async">异步组件</router-link>
-            <a href="/admin.html" style="color:red">查看后台</a>
         </div>
         <div class="view">
             <router-view></router-view>

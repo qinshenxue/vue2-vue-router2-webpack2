@@ -1,5 +1,5 @@
 <template>
     <div>
-        web index
+        index
     </div>
 </template>
