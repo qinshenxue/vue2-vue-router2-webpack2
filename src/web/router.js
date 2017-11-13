@@ -6,6 +6,8 @@ import sass from './views/sass.vue'
 import image from './views/image.vue'
 import iconfont from './views/iconfont.vue'
 export default {
+    base: process.env.NODE_ENV === "production" ? '/' : '/web/',
+    mode: 'history',
     linkActiveClass: 'active',
     routes: [{
         path: '/',

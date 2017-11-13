@@ -6,6 +6,12 @@ var compiler = webpack(devConfig);
 var server = new webpackDevServer(compiler, {
     hot: true,
     quiet: true,
+    historyApiFallback: {
+        rewrites: [
+            { from: /^\/web/, to: '/web/index.html' },
+            { from: /^\/admin/, to: '/admin/index.html' }
+        ]
+    },
     publicPath: config.dev.outputPublicPath,
     stats: { colors: true }
 });
