@@ -8,6 +8,7 @@ var FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
 module.exports = merge(baseWebpackConfig, {
     devServer: {
         hot: true, // 热更新
+        quiet: true,
         port: config.dev.port, // 端口
         open: true, // 自动打开浏览器
         publicPath: config.dev.outputPublicPath // 和下面的 output.publicPath
