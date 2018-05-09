@@ -72,7 +72,7 @@ exports.genHtmlPlugins = function () {
             new HtmlWebpackPlugin({
                 filename: isProd ? path.resolve(__dirname, `../dist/${name}/index.html`) : name + '.html',
                 template: 'index.tpl.html',
-                chunks: isProd ? ['manifest','vendor',`${name}-vendor`,  name] : [name],
+                chunks: isProd ? ['manifest', 'vendor', `${name}-vendor`, name] : [name],
                 inject: true
             }))
     })
