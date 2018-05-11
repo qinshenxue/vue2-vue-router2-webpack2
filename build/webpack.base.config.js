@@ -23,10 +23,10 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /\.js$/,
-            use: "babel-loader",
-            include: [resolve('../src')]
-        },
+                test: /\.js$/,
+                use: "babel-loader",
+                include: [resolve('../src')]
+            },
             {
                 test: /\.vue$/,
                 use: {

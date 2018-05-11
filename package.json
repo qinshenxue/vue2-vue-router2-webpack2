@@ -4,10 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "node build/dev.js",
-        "dev-cli":
-            "webpack-dev-server --progress --config build/webpack.dev-cli.config.js",
-        "build": "node build/prod.js",
+        "dev-cli": "webpack-dev-server --progress --config build/webpack.dev.config.js",
+        "build": "webpack --progress --config build/webpack.prod.config.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
@@ -19,8 +17,7 @@
     "bugs": {
         "url": "https://github.com/qinshenxue/vue2-vue-router2-webpack2/issues"
     },
-    "homepage":
-        "https://github.com/qinshenxue/vue2-vue-router2-webpack2#readme",
+    "homepage": "https://github.com/qinshenxue/vue2-vue-router2-webpack2#readme",
     "devDependencies": {
         "autoprefixer": "^7.2.5",
         "babel-core": "^6.26.0",
