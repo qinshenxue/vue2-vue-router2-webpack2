@@ -1,44 +1,36 @@
-// 设定为生产环境
-process.env.NODE_ENV = 'production';
-var webpack = require('webpack');
-var merge = require('webpack-merge');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var path = require('path');
-var baseWebpackConfig = require('./webpack.base.config');
-var utils = require('./utils');
-var config = require('./config');
-
+const merge = require("webpack-merge")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const baseWebpackConfig = require("./webpack.base.config")
+const path = require('path')
 module.exports = merge(baseWebpackConfig, {
+    mode: 'production',
     output: {
-        path: config.prod.outputPath,
-        publicPath: config.prod.outputPublicPath,
-        filename: 'js/[name].js?[chunkhash]'
+        path: path.resolve(__dirname, '../dist')
+        publicPath: "/static/"
     },
     module: {
-        rules: utils.styleLoaders()
+        rules: [{
+            test: /\.css$/,
+            use: [MiniCssExtractPlugin.loader, "css-loader", 'postcss-loader']
+        }, {
+            test: /\.less$/,
+            use: [MiniCssExtractPlugin.loader, "css-loader", 'postcss-loader', "less-loader"]
+        }, {
+            test: /\.s[ac]ss$/,
+            use: [MiniCssExtractPlugin.loader, "css-loader", 'postcss-loader', "sass-loader"]
+        }, {
+            test: /\.styl$/,
+            use: [MiniCssExtractPlugin.loader, "css-loader", 'postcss-loader', "stylus-loader"]
+        }]
     },
     plugins: [
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"'
+        new MiniCssExtractPlugin({
+            filename: 'css/style.css'
         }),
-        new webpack.optimize.UglifyJsPlugin(),
-        new ExtractTextPlugin({
-            allChunks: true,
-            filename: "css/[name].css?[contenthash:8]"
-        }),
-
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: function (module) {
-                return module.context && module.context.indexOf("node_modules") !== -1;
-            }
-        }),
-
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'manifest',
-            chunks: ['vendor']
-        }),
-        ...utils.genHtmlPlugins()
+        new HtmlWebpackPlugin({
+            filename: "index.html",
+            template: "index.tpl.html"
+        })
     ]
 })

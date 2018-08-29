@@ -1,29 +1,30 @@
-var webpack = require("webpack");
-var merge = require("webpack-merge");
-var baseWebpackConfig = require("./webpack.base.config");
-var utils = require("./utils");
-var config = require("./config");
-var FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
-
+const merge = require("webpack-merge")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const baseWebpackConfig = require("./webpack.base.config")
 module.exports = merge(baseWebpackConfig, {
-    devServer: {
-        hot: true, // 热更新
-        quiet: true,
-        port: config.dev.port, // 端口
-        open: true, // 自动打开浏览器
-        publicPath: config.dev.outputPublicPath // 和下面的 output.publicPath
-    },
+    mode: 'development',
     output: {
-        path: config.dev.outputPath,
-        publicPath: config.dev.outputPublicPath
+        publicPath: "/"
     },
     module: {
-        rules: utils.styleLoaders()
+        rules: [{
+            test: /\.css$/,
+            use: ["vue-style-loader", "css-loader", 'postcss-loader']
+        }, {
+            test: /\.less$/,
+            use: ["vue-style-loader", "css-loader", 'postcss-loader', "less-loader"]
+        }, {
+            test: /\.s[ac]ss$/,
+            use: ["vue-style-loader", "css-loader", 'postcss-loader', "sass-loader"]
+        }, {
+            test: /\.styl$/,
+            use: ["vue-style-loader", "css-loader", 'postcss-loader', "stylus-loader"]
+        }]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
-        ...utils.genHtmlPlugins(),
-        new FriendlyErrorsPlugin()
+        new HtmlWebpackPlugin({
+            filename: "index.html",
+            template: "index.tpl.html"
+        })
     ]
-});
+})

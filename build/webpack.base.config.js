@@ -1,48 +1,26 @@
-var webpack = require('webpack');
-var path = require('path');
-var utils = require('./utils');
-
-function resolve(relPath) {
-    return path.resolve(__dirname, relPath);
-}
-
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
-    entry: {
-        index: resolve('../src/main.js'),
-    },
+    entry: './src/main.js',
     output: {
-        filename: 'js/[name].js',
-        chunkFilename: "js/[name].[chunkhash].js"
-    },
-    resolve: {
-        extensions: ['.js', '.vue', '.json'],
-        alias: {
-            '@': resolve('../src'),
-            '~': resolve('../src/assets')
-        }
+        filename: 'js/[name].js'
     },
     module: {
         rules: [{
-                test: /\.js$/,
-                use: "babel-loader",
-                include: [resolve('../src')]
-            },
-            {
                 test: /\.vue$/,
-                use: {
-                    loader: "vue-loader",
-                    options: utils.vueLoaderOptions()
-                }
-            },
-            {
+                use: ["vue-loader"]
+            }, {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: ["babel-loader"]
+            }, {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                use: {
+                use: [{
                     loader: "url-loader",
                     options: {
                         limit: 10000,
-                        name: 'images/[name].[hash:7].[ext]'
+                        name: 'images/[name].[hash:7].[ext]' // 将图片都放入 images 文件夹下，[hash:7]防缓存
                     }
-                }
+                }]
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -50,10 +28,13 @@ module.exports = {
                     loader: "url-loader",
                     options: {
                         limit: 10000,
-                        name: 'fonts/[name].[hash:7].[ext]'
+                        name: 'fonts/[name].[hash:7].[ext]' // 将字体放入 fonts 文件夹下
                     }
                 }]
             }
         ]
-    }
+    },
+    plugins: [
+        new VueLoaderPlugin()
+    ]
 }
